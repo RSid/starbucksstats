@@ -41,4 +41,9 @@ describe "#starbucksstats gets link for individual beverage by name" do
 
     expect(beverage_link).to eql('/menu/beverage-list/espresso-beverages/espresso')
   end
+
+  it "gives a useful error for names that aren't found" do
+    expect{ Starbucksstats.get_beverage_link('Esprexxo') }.to raise_error(
+    ArgumentError, "Drink not found. The name must be exact.")
+  end
 end
