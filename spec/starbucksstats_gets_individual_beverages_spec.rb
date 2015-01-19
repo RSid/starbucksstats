@@ -34,3 +34,11 @@ describe "#starbucksstats gets links for all beverages" do
       to eql(true)
   end
 end
+
+describe "#starbucksstats gets link for individual beverage by name" do
+  it 'gets link for individual beverage by name' do
+    beverage_link = Starbucksstats.get_beverage_link('Espresso')
+
+    expect(beverage_link).to eql('/menu/beverage-list/espresso-beverages/espresso')
+  end
+end
