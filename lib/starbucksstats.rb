@@ -74,7 +74,7 @@ module Starbucksstats
         end
       end
     end
-    return "Drink not found. The name must be exact."
+    raise ArgumentError, "Drink not found. The name must be exact."
   end
 
   def self.get_nutritional_info(drink_name)
