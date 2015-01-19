@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rest-client', '~>1.7', '>=1.7.2'
   spec.add_dependency 'nokogiri', '~>1.6', '>=1.6.5'
+  spec.add_dependency 'pdf-reader', '~>1.3', '>=1.3.3'
 
   spec.add_development_dependency 'pry', '~>0.10','>=0.10.1'
   spec.add_development_dependency 'rspec', '~>3.1','>=3.1.0'
