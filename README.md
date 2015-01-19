@@ -1,6 +1,7 @@
 # Starbucksstats
 
-TODO: Write a gem description
+Not yet in a working state, when finished would be used to retrieve nutritional
+ data from Starbucks' website via mock API.
 
 ## Installation
 
