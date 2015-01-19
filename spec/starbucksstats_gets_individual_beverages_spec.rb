@@ -18,4 +18,19 @@ describe "#starbucksstats gets links for all beverages" do
     expect(beverages.include?(ROOT_RETURNED_URL +
     sample_list_of_actual_beverage_links[-1])).to eql(true)
   end
+
+  it 'gets a list of names for each individual beverage' do
+
+    sample_list_of_actual_beverage_links = ['Chamomile Tea',
+      'Classic Hot Chocolate', 'Cappuccino',
+      'Starbucks Bottled Frappuccino Mocha Chocolate Drink']
+
+      beverages = Starbucksstats.get_all_beverages_names
+
+      expect(beverages.length).to be > 0
+      expect(beverages.include?(sample_list_of_actual_beverage_links[0])).
+      to eql(true)
+      expect(beverages.include?(sample_list_of_actual_beverage_links[-1])).
+      to eql(true)
+    end
 end
