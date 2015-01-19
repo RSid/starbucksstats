@@ -32,5 +32,5 @@ describe "#starbucksstats gets links for all beverages" do
       to eql(true)
       expect(beverages.include?(sample_list_of_actual_beverage_links[-1])).
       to eql(true)
-    end
+  end
 end
