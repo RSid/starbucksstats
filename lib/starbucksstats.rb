@@ -60,6 +60,27 @@ module Starbucksstats
     beverage_names
   end
 
+  def self.get_beverage_link(drink_name)
+    beverage_type_links = self.get_beverage_types_links
+
+    beverage_names = []
+
+    beverage_type_links.each do |beverage_type_link|
+      beverage_info = self.get_individual_beverage_info(beverage_type_link)
+
+      beverage_info.each do |bvg|
+        if bvg.text.strip == drink_name
+          return bvg["href"]
+        end
+      end
+    end
+    return "Drink not found. The name must be exact."
+  end
+
+  def self.get_nutritional_info(drink_name)
+
+  end
+
   private
 
   def self.is_menu_item?(info)
@@ -72,9 +93,7 @@ module Starbucksstats
   end
 
   def self.get_beverage_info
-    @beverage_page = Nokogiri::HTML(RestClient.get(ROOT_URL + MENU_URL + 'beverage-list')) do |config|
-      config.noblanks
-    end
+    @beverage_page = Nokogiri::HTML(RestClient.get(ROOT_URL + MENU_URL + 'beverage-list'))
     beverage_info = @beverage_page.css('ol li dl dt a')
   end
 end
