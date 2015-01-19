@@ -10,7 +10,7 @@ describe "#starbucksstats gets links for all beverages" do
     'chocolate-beverages/vanilla-spice-hot-chocolate',
     'bottled-drinks/starbucks-bottled-coffee-frappuccino-mocha-chocolate-drink']
 
-    beverages = Starbucksstats.get_beverage_types_links
+    beverages = Starbucksstats.get_all_beverage_links
 
     expect(beverages.length).to be > 0
     expect(beverages.include?(ROOT_RETURNED_URL +
