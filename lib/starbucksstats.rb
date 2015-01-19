@@ -1,6 +1,7 @@
 require "starbucksstats/version"
 require 'nokogiri'
 require 'rest-client'
+require 'pdf-reader'
 require 'pry'
 
 module Starbucksstats
@@ -78,6 +79,17 @@ module Starbucksstats
   end
 
   def self.get_nutritional_info(drink_name)
+    drink_link = self.get_beverage_link(drink_name)
+    @page_of_individual_drink = Nokogiri::HTML(RestClient.get(ROOT_URL + drink_link))
+
+    pdf_link = @page_of_individual_drink.css('body div div div div p a')[0]["href"][2..-1]
+    binding.pry
+    data = RestClient.get(pdf_link)
+    File.open(data, "rb") do |io|
+      reader = PDF::Reader.new(io)
+
+      puts reader.info
+    end
 
   end
 
